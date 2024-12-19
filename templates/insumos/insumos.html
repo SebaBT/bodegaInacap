@@ -1,0 +1,52 @@
+{% extends "home.html" %}
+{% load static %}
+    
+{% block content %}
+
+    <div class="card w-100 m-3 rounded-4">
+        <div class="card w-100 justify-content-center" id="top">
+            <h4 class="m-0 p-0">{{formTitle}}</h4>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr class="table-danger">
+                    <th scope="col" class="ps-5">ID</th>
+                    <th scope="col">NOMBRE</th>
+                    <th scope="col">CATEGORÍA</th>
+                    <th scope="col">DESCRIPCION</th> 
+                    <th scope="col">EN PRESTAMO</th>  
+                    <th scope="col">LOCKER</th>  
+                    <th scope="col">CAJA</th>
+                    <th scope="col" class="p-0 align-content-center justify-content-end text-end pe-5">
+                        <a class="btn bg-danger h-1 fw-bold" onClick="openModal('{% url "CrearInsumo" %}')"><img src="{% static "image/add.svg" %}"></a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for insumo in insumos %} 
+                    <tr class="w-100">
+                        <td scope="row" class="ps-5">{{ insumo.id }}</td>
+                        <td>{{ insumo.nombre }}</td>
+                        <td>{{ insumo.categoria }}</td> 
+                        <td>{{ insumo.descripcion_corta }}</td>  
+                        <td>{{ insumo.activo|yesno:"No,Si" }}</td> 
+                        <td>{% if insumo.locker %}{{insumo.locker}}{% else %}Sin Locker{% endif %}</td>
+                        <td>{% if insumo.caja %}{{insumo.caja}}{% else %}Sin Caja{% endif %}</td> 
+                        <td class="p-0 align-content-center justify-content-end text-end pe-5">
+                            <a class="btn bg-success fw-bold" onclick="openModal('{% url "DetallesInsumo" insumo.id %}')"><img src="{% static "image/details.svg" %}"></a>
+                            <a class="btn bg-info fw-bold" data-bs-placement="left" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-html="true" data-bs-title="<img src='{{insumo.adjunto}}' height='250px' />"><img src="{% static "image/image.svg" %}"></a>
+                            <a class="btn bg-warning fw-bold" onclick="openModal('{% url "ActualizarInsumo" insumo.id %}')"><img src="{% static "image/edit.svg" %}"></a>
+                            {% if insumo.enprestamo %}
+                            <a class="btn btn-danger fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="El Insumo no debe estar en prestamo para poder ser borrado"><img src="{% static "image/delete.svg" %}"></a>
+                            {% else %}
+                            <a class="btn bg-danger fw-bold" onclick="openModal('{% url "BorrarInsumo" insumo.id %}')"><img src="{% static "image/delete.svg" %}"></a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

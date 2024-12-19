@@ -1,0 +1,32 @@
+{% load static %}
+
+<div class="card w-100 rounded-4 border-0 overflow-hidden">
+    <div class="card w-100" id="top">
+        <h4>{{formTitle}}</h4>
+    </div>
+
+<div class="card-body d-flex text-left overflow-scroll justify-content-center">
+<form method="post" action="{% url "MoverCaja" caja.id %}" onsubmit="enviarFormulario(event,this)">
+{% csrf_token %}
+<div class="d-flex">
+                <div class="d-flex gap-2">
+                    <div class="mb-2" id="createEmail">
+                        <label for="cajaInput" class="form-label">Desde locker:</label>
+                        <input class="form-control w-75" type="text" value="{{ locker_viejo }}" disabled readonly>
+                    </div>
+                    <div class="mb-2" id="createInput">
+                        <label class="form-label">Hacia locker:</label>
+                        {{ form.locker }}
+                    <div>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="submit" value="Mover" class="btn btn-primary w-100 mb-1 align-items-center"></input>
+<div id="errorsForm"></div>
+</div>
+<script src={% static "js/moverInsumoManager.js" %}></script>
+<script>
+    cajaSelect.dataset.initialValue = "{{ caja_vieja.id|default:'' }}";
+</script>
+</form>

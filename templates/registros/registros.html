@@ -1,0 +1,40 @@
+{% extends "home.html" %}
+{% load static %}
+    
+{% block content %}
+
+<div class="card w-100 m-3 rounded-4">
+    <div class="card w-100 justify-content-center" id="top">
+        <h4 class="m-0 p-0">{{ title }}</h4>
+        <h4 class="m-0 p-0">{{ formTitle }}</h4>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr class="table-danger">
+                <th scope="col">USUARIO</th>
+                <th scope="col">MODELO</th>
+                <th scope="col">FECHA</th>
+                <th scope="col">TIPO</th>  
+                <th scope="col"></th> 
+            </tr>
+        </thead>
+        <tbody>
+            {% for registro in registros %} 
+                <tr>
+                    <td>{{ registro.user }}</td>
+                    <td>{{ registro.nombreTabla }}</td>  
+                    <td>{{ registro.timestamp }}</td> 
+                    <td>{{ registro.action }}</td> 
+                    <td class="p-0 align-content-center justify-content-end text-end pe-5">
+                        <a class="btn bg-success fw-bold" onclick="openModal('{% url "DetallesRegistro" registro.id %}')"><img src="{% static "image/details.svg" %}"></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% include "../components/modal.html" %}
+
+{% endblock %}

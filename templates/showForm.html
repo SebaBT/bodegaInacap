@@ -1,0 +1,25 @@
+{% extends "home.html" %}
+{% load static %}
+
+{% block content %}
+<div class="card w-100 overflow-scroll" id="insumoCreate">
+    <div class="card w-100" id="top">
+        <h4>{{formTitle}}</h4>
+    </div>
+{% for form in forms %}
+
+    
+
+    <div class="card-body d-flex text-left">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <hr class="rounded">
+
+{% endfor %}
+</div>
+{% endblock %}

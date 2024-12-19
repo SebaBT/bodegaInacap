@@ -1,0 +1,25 @@
+{% load static %}
+
+<div class="card w-100 rounded-4 border-0 overflow-hidden">
+    <div class="card w-100" id="top">
+        <h4>{{formTitle}}</h4>
+    </div>
+
+    <div class="card-body d-flex text-left overflow-scroll">
+        <div class="col-6">
+            <div class="mb-3" id="createInput">
+                <label for="cajaInput" class="form-label">Caja:</label>
+                <input class="form-control" id="cajaInput" type="text" value="{{ caja.nameTag }}" disabled readonly>
+            </div>
+            <div class="mb-3" id="createInput">
+                <label for="cajaInput" class="form-label">Locker:</label>
+                <input class="form-control" id="cajaInput" type="text" value="{{ caja.locker }}" disabled readonly>
+            </div>
+        </div>
+        <div class="col-6 d-flex flex-end justify-content-end flex-fill ps-2 pb-2 align-items-center">
+            <div class="inputWrapper">
+                <img id="imgPreview" class="img-thumbnail d-block" src="{{ caja.adjunto }}">
+            </div>
+        </div>
+    </div>
+</div>

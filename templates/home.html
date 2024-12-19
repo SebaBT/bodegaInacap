@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href='{% static "css/style.css" %}'>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <script src="{% static "js/jquery.js" %}" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/inputmask/inputmask.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/css/inputmask.min.css" rel="stylesheet"/>
+    </head>
+
+    
+
+    <body data-barba="wrapper">
+        
+        <div class="position-absolute" style="z-index: 5; top: 50%; left: 50%"> 
+        </div>
+        <div id="main" class="w-100 vh-100">
+            {% include "components/navbar.html" %}
+            <div id="down" class="d-flex text-left">
+                <div class="column h-100" id="sidebar">
+                    {% include "components/sidebar.html" %}
+                </div>
+                    <div id="content" class="column px-10 w-100" data-barba="container" data-barba-namespace="home">
+                    {% block content %}
+                    404
+                    {% endblock %}
+                    </div>
+            </div>
+        </div>
+
+        {% include "components/modal.html" %}
+
+    </body>
+
+    <script src="{% static "js/modalManager.js" %}" crossorigin="anonymous"></script>
+    <script src="{% static "js/formManger.js" %}" crossorigin="anonymous"></script>
+    <script>
+        tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    </script>
+</html>

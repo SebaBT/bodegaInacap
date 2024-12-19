@@ -1,0 +1,44 @@
+{% extends "home.html" %}
+{% load static %}
+    
+{% block content %}
+
+<div class="card w-100 m-3 rounded-4">
+    <div class="card w-100 justify-content-center" id="top">
+        <h4 class="m-0 p-0">{{formTitle}}</h4>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr class="table-danger">
+                <th scope="col">ID</th>
+                <th scope="col">SOLICITANTE</th>
+                <th scope="col">INSUMO</th>
+                <th scope="col">UBICACIÓN</th>  
+                <th scope="col">ESTADO</th>  
+                <th scope="col">FECHA</th>  
+                <th scope="col" class="p-0 align-content-center justify-content-end text-end pe-5">
+                    <a class="btn bg-danger h-1 fw-bold" onClick="openModal('{% url "CrearPrestamo" %}')"><img src="{% static "image/add.svg" %}"></a>
+                </th> 
+            </tr>
+        </thead>
+        <tbody>
+            {% for prestamo in prestamos %} 
+                <tr>
+                    <td scope="row">{{ prestamo.id }}</td>
+                    <td>{{ prestamo.solicitante.nombre_completo }}</td>
+                    <td>{{ prestamo.insumo.nombre }}</td>  
+                    <td>{{ prestamo.ubicacion }}</td> 
+                    <td>{{ prestamo.get_estado_display }}</td> 
+                    <td>{{ prestamo.fechaCreacion }}</td>  
+                    <td class="p-0 align-content-center justify-content-end text-end pe-5">
+                        <a class="btn bg-success fw-bold" onclick="openModal('{% url "DetallesPrestamo" prestamo.id %}')"><img src="{% static "image/details.svg" %}"></a>
+                        <a class="btn bg-warning fw-bold" onclick="openModal('{% url "ActualizarPrestamo" prestamo.id %}')"><img src="{% static "image/edit.svg" %}"></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

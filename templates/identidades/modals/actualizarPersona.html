@@ -1,0 +1,29 @@
+{% load static %}
+
+<div class="card w-100 rounded-4 border-0 overflow-hidden">
+    <div class="card w-100" id="top">
+        <h4>{{title}}</h4>
+    </div>
+
+    <div class="card-body d-flex text-left overflow-scroll justify-content-center">
+        <form method="POST" enctype="multipart/form-data" action="{% url "ActualizarPersona" id %}" onsubmit="enviarFormulario(event,this)">
+            {% csrf_token %}
+            <div class="d-flex gap-5">
+                <div class="mb-3" id="createInput">
+                    {{ form.rut.label_tag }}
+                    {{ form.rut }}
+                </div>
+                <div class="mb-3" id="createInput">
+                    {{ form.nombre_completo.label_tag }}
+                    {{ form.nombre_completo }}
+                </div>
+                <div class="mb-3" id="createDate">
+                    {{ form.fecha_nacimiento.label_tag }}
+                    {{ form.fecha_nacimiento }}
+                </div>
+            </div>
+            <input id="formSubmit" type="submit" value="Actualizar" class="btn btn-primary w-100 mb-1 align-items-center"></input>
+            <div id="errorsForm"></div>
+        </form>
+    </div>    
+</div>

@@ -1,0 +1,55 @@
+{% load static %}
+<div class="card w-100 rounded-4 border-0 overflow-hidden" style="width: 750px !important">
+    <div class="card w-100 justify-content-center" id="top">
+        <h4 class="m-0 p-0">Contenido Locker {{locker.nameTag}}</h4>
+    </div>
+
+    <table class="table m-0">
+        <thead class=>
+            <tr class="table-danger">
+                <th scope="col" class="ps-5">ID</th>
+                <th scope="col">ITEM</th>
+                <th scope="col">TIPO</th>  
+                <th scope="col" class="p-0 align-content-center justify-content-end text-end pe-5">
+                    <a class="btn btn-danger align-items-center fw-bold" onClick="openModal('{% url "CrearCaja" locker.id %}',true)">
+                        <img src="{% static "image/add.svg" %}"> Caja
+                    </a>
+                </th> 
+            </tr>
+        </thead>
+        <tbody class=>
+            {% for caja in cajas %} 
+                <tr class="table-light">
+                    <td scope="row" class="ps-5">{{ caja.id }}</td>
+                    <td>{{ caja.nameTag }}</td>
+                    <td>Caja</td> 
+                    <td class="p-0 align-content-center justify-content-end text-end pe-5">
+                        {% if caja.habitado %}
+                        <a class="btn btn-danger fw-bold" onclick="openModal('{% url "BodegaCaja" caja.id %}',true)"><img src="{% static "image/list.svg" %}"></a>
+                        {% else %}
+                        <a class="btn btn-danger fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Para ver el contenido de la caja debe estar poblado primero."><img src="{% static "image/list.svg" %}"></a>
+                        {% endif %}
+                        <a class="btn btn-danger fw-bold" data-bs-placement="left" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-html="true" data-bs-title="<img src='{{caja.adjunto}}' height='250px' />"><img src="{% static "image/image.svg" %}"></a>
+                        <a class="btn bg-warning fw-bold" onclick="openModal('{% url "ActualizarCaja" caja.id %}',true)"><img src="{% static "image/edit.svg" %}"></a>
+                        <a class="btn bg-warning fw-bold" onclick="openModal('{% url "MoverCaja" caja.id  %}',true)"><img src="{% static "image/swap.svg" %}"></a>
+                        <a class="btn btn-danger align-items-center fw-bold" onClick="openModal('{% url "BorrarCaja" caja.id %}',true)"><img src="{% static "image/delete.svg" %}"></a>
+                    </td>
+                </tr>
+            {% endfor %}
+
+            {% for insumo in insumos %} 
+            <tr class="table-secondary">
+                <td scope="row" class="ps-5">{{ insumo.id }}</td>
+                <td>{{ insumo.nombre }}</td>
+                <td>Insumo</td> 
+                <td class="p-0 align-content-center justify-content-end text-end pe-5">
+                    <a class="btn bg-success fw-bold" onclick="openModal('{% url "DetallesInsumo" insumo.id %}',true)"><img src="{% static "image/details.svg" %}"></a>
+                    <a class="btn bg-info fw-bold" data-bs-placement="left" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-html="true" data-bs-title="<img src='{{insumo.adjunto}}' height='250px' />"><img src="{% static "image/image.svg" %}"></a>
+                    <a class="btn bg-warning fw-bold" onclick="openModal('{% url "ActualizarInsumo" insumo.id %}',true)"><img src="{% static "image/edit.svg" %}"></a>
+                    <a class="btn bg-danger fw-bold" onclick="openModal('{% url "BorrarInsumo" insumo.id %}',true)"><img src="{% static "image/delete.svg" %}"></a>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+

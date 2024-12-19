@@ -1,0 +1,74 @@
+{% load static %}
+<div class="sidebar">
+    <div class="accordion" id="sidebarAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button main {% if seccionActiva == "prestamos" %} seccionActiva {% endif %}" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePrestamos" aria-expanded="true">
+                    Préstamos
+                </button>
+            </h2>
+            <div id="collapsePrestamos" class="accordion-collapse collapse show">
+                <div class="accordion-body m-0 p-0">
+                    <a class="sub" href="{% url "Prestamos" %}">Historial Préstamo</a>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div id="bodega" class="accordion-item">    
+            <h2 class="accordion-header">
+                <button class="accordion-button main {% if seccionActiva == "bodega" %} seccionActiva {% endif %}" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBodega" aria-expanded="false" aria-controls="collapseBodega">
+                    Bodega
+                </button>
+            </h2>
+            <div id="collapseBodega" class="accordion-collapse collapse show">
+                <div class="accordion-body m-0 p-0">
+                    <a class="sub" href="{% url "Bodega" %}">Organizar</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="registros" class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button main {% if seccionActiva == "registros" %} seccionActiva {% endif %}" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRegistros" aria-expanded="false" aria-controls="collapseRegistros">
+                    Registros
+                </button>
+            </h2>
+            <div id="collapseRegistros" class="accordion-collapse collapse show">
+                <div class="accordion-body m-0 p-0">
+                    <a class="sub" href="{% url "Registros" %}">Ver Registros</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="insumos" class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button main {% if seccionActiva == "insumos" %} seccionActiva {% endif %}" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInsumos" aria-expanded="false" aria-controls="collapseInsumos">
+                    Insumos
+                </button>
+            </h2>
+            <div id="collapseInsumos" class="accordion-collapse collapse show">
+                <div class="accordion-body m-0 p-0">
+                    <a class="sub" href="{% url "Insumos" %}">Ver Insumos</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="identidades" class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button main {% if seccionActiva == "identidades" %} seccionActiva {% endif %}" type="button" data-bs-toggle="collapse" data-bs-target="#collapseUsuarios" aria-expanded="false" aria-controls="collapseUsuarios">
+                    Identidades
+                </button>
+            </h2>
+            <div id="collapseUsuarios" class="accordion-collapse collapse show">
+                <div class="accordion-body m-0 p-0">
+                    <a class="sub" href="{% url "Usuarios" %}">Ver Usuarios</a>
+                    <a class="sub" href="{% url "Personas" %}">Ver Personas</a>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

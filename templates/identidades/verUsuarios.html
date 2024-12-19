@@ -1,0 +1,41 @@
+{% extends "home.html" %}
+{% load static %}
+    
+{% block content %}
+
+    <div class="card w-100 m-3 rounded-4">
+        <div class="card w-100 justify-content-center" id="top">
+            <h4 class="m-0 p-0">{{title}}</h4>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr class="table-danger align-items-center">
+                    <th scope="col" class="ps-5">ID</th>
+                    <th scope="col">NOMBRE USUARIO</th>
+                    <th scope="col">CORREO</th>
+                    <th scope="col">PERSONA</th>
+                    <th scope="col" class="p-0 align-content-center justify-content-end text-end pe-5">
+                        <a class="btn btn-danger h-1 fw-bold" onClick="openModal('{% url "CrearUsuario" %}')"><img src="{% static "image/add.svg" %}"></a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for usuario in usuarios %}  <!-- Loop through usuarios -->
+                    <tr>
+                        <td scope="row" class="ps-5">{{ usuario.id }}</td>
+                        <td>{{ usuario.username }}</td>
+                        <td>{{ usuario.email}}</td>  <!-- Access categoria's name -->
+                        <td>{{ usuario.persona.nombre_completo }}</td>  <!-- Display descripcion -->
+                        <td class="p-0 align-content-center justify-content-end text-end pe-5">
+                            <a class="btn bg-warning fw-bold" onclick="openModal('{% url "ActualizarUsuario" usuario.id %}')"><img src="{% static "image/edit.svg" %}"></a>
+                            <a class="btn btn-danger fw-bold" onclick="openModal('{% url "BorrarUsuario" usuario.id %}')"><img src="{% static "image/delete.svg" %}"></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+    </div>
+{% endblock %}
