@@ -10,7 +10,7 @@ from bodegaApp.forms.adjunto import AdjuntoForm
 from bodegaApp.forms.caja import CajaForm
 from bodegaApp.forms.locker import LockerForm
 import datetime
-
+from django.contrib.auth.decorators import login_required
 from bodegaApp.models.archivos import Adjunto
 from bodegaApp.models.identidades import Usuario
 
@@ -22,6 +22,7 @@ section = {
 base = "bodega/"
 modals = base + "modals/"
 
+@login_required
 def verBodega(request):
     
     lockers = Locker.objects.all()
@@ -37,6 +38,8 @@ def verBodega(request):
     
     return render(request, base+'bodega.html', { **context, **section })
 
+
+@login_required
 def verLocker(request, id):
 
     cajas = Caja.objects.filter(locker=id)
@@ -56,7 +59,7 @@ def verLocker(request, id):
     
     return render(request, modals+'contenidoLocker.html', { **context, **section })
 
-
+@login_required
 def verCaja(request, id):
     
     context = {
@@ -66,7 +69,7 @@ def verCaja(request, id):
     
     return render(request, modals+'contenidoCaja.html', { **context})
 
-
+@login_required
 def verInsumo(request, id):
     
     context = {
@@ -75,6 +78,7 @@ def verInsumo(request, id):
     
     return render(request, 'insumos/modals/detalles.html', { **context })
 
+@login_required
 def moverCaja(request, id):
     caja = Caja.objects.get(id=id)
     
@@ -93,6 +97,7 @@ def moverCaja(request, id):
     
     return render(request, modals+'moverCaja.html', { **context, **section })
 
+@login_required
 def moverInsumo(request, id):
     insumo = Insumo.objects.get(id=id)
     if request.method == 'POST':
@@ -106,11 +111,13 @@ def moverInsumo(request, id):
     context = {'form': form, 'locker_viejo': insumo.locker, 'caja_vieja': insumo.caja}
     return render(request, modals+'moverInsumoModal.html', { **context, **section })
 
+@login_required
 def borrarCaja(request, id):
     caja = Caja.objects.get(id=id)
     caja.delete()
     return redirect('base')
 
+@login_required
 def crearCaja(request,id=None):
     if request.method == 'POST':
         for filename in request.FILES:
@@ -143,6 +150,7 @@ def crearCaja(request,id=None):
 
     return render(request, modals+'crearCaja.html', {"form": form, "imageForm": imageForm})
 
+@login_required
 def crearLocker(request):
     if request.method == 'POST':
         for filename in request.FILES:
@@ -175,7 +183,7 @@ def crearLocker(request):
     return render(request, modals+'crearLocker.html', {"form": form, "imageForm": imageForm})
 
 
-
+@login_required
 def borrarCaja(request, id):
     if request.method == 'POST':
         Caja.objects.get(id=id).delete()
@@ -183,7 +191,7 @@ def borrarCaja(request, id):
 
     return render(request, 'components/seguroBorrado.html', {'id': id})
 
-
+@login_required
 def borrarLocker(request, id):
     if request.method == 'POST':
         Locker.objects.get(id=id).delete()
@@ -193,7 +201,7 @@ def borrarLocker(request, id):
 
 
 
-
+@login_required
 def actualizarCaja(request, id):
     if request.method == 'POST':
         if request.FILES:
@@ -232,7 +240,7 @@ def actualizarCaja(request, id):
     return render(request, modals+'actualizarCaja.html', {"form": form, "imageForm": imageForm, "id": id, "adjunto": adjunto})
 
 
-
+@login_required
 def actualizarLocker(request, id):
     if request.method == 'POST':
         if request.FILES:
@@ -269,7 +277,7 @@ def actualizarLocker(request, id):
 
     return render(request, modals+'actualizarLocker.html', {"form": form, "imageForm": imageForm, "id": id, "adjunto": adjunto})
 
-
+@login_required
 def detallesCaja(request, id):
     
     context = {
@@ -278,6 +286,7 @@ def detallesCaja(request, id):
     
     return render(request, modals+'detallesCaja.html', { **context })
 
+@login_required
 def detallesLocker(request, id):
     
     context = {

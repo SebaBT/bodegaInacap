@@ -10,6 +10,7 @@ from bodegaApp.forms.insumo import InsumoForm
 from bodegaApp.models.archivos import Adjunto
 from bodegaApp.models.inventario import Insumo
 from bodegaApp.models.registros import Prestamo
+from django.contrib.auth.decorators import login_required
 
 section = {
     "seccionActiva": os.path.basename(__file__).replace('.py', ''),
@@ -19,6 +20,7 @@ section = {
 base = "insumos/"
 modals = base + "modals/"
 
+@login_required
 def verInsumos(request):
     insumos = Insumo.objects.all()
     for insumo in insumos:
@@ -37,6 +39,7 @@ def verInsumos(request):
     context = {'insumos': insumos, 'formTitle': "Insumos", 'seccionActiva': seccionActiva}
     return render(request, 'insumos/insumos.html', context)
 
+@login_required
 def crearInsumo(request):
     if request.method == 'POST':
         for filename in request.FILES:
@@ -70,7 +73,7 @@ def crearInsumo(request):
     return render(request, 'insumos/modals/crear.html', {"form": form, "imageForm": imageForm})
 
 
-
+@login_required
 def borrarInsumo(request, id):
     if request.method == 'POST':
         Insumo.objects.get(id=id).delete()
@@ -78,7 +81,7 @@ def borrarInsumo(request, id):
 
     return render(request, 'components/seguroBorrado.html', {'id': id})
 
-
+@login_required
 def actualizarInsumo(request, id):
     if request.method == 'POST':
         

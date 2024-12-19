@@ -4,11 +4,11 @@
         <div class="container-fluid">
             <img src="{% static 'image/logo.svg' %}" alt="logo" id="logo" width="120" height="100" class="d-inline-block align-text-top">
             <div id="info">
-                <div class="d-flex">
-                {% if usuario.is_staff == True %}
-                    <button class="btn btn-danger">Administrador</button>
+                <div class="d-flex pe-5">
+                {% if user.is_superuser == True %}
+                    <button class="btn btn-danger me-1">Administrador</button>
                 {% endif %}
-                    <p class="ms-2 me-2">{{user.username}}</p>
+                    <h5 class="ms-2 me-2">{{user.username}}</h5>
                 </div>
             </div>
         </div>

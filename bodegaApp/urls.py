@@ -4,7 +4,7 @@ from bodegaApp.views.identidades import actualizarPersona, actualizarUsuario, bo
 from bodegaApp.views.insumos import actualizarInsumo, borrarInsumo, crearInsumo, verInsumos
 from bodegaApp.views.outside import login_view
 from bodegaApp.views.prestamos import actualizarPrestamo, crearPrestamo, detallesPrestamo, verPrestamos
-from bodegaApp.views.registros import verTodosRegistros
+from bodegaApp.views.registros import verTodosRegistros, detalleRegistro
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -60,6 +60,7 @@ urlpatterns = [
     
     # Registros
     path("registros/", verTodosRegistros, name="Registros"),
+    path("detallesRegistro/<int:id>", detalleRegistro, name="DetalleRegistro"),
     
     # Insumos
     path("insumos/", verInsumos, name="Insumos"),

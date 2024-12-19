@@ -6,6 +6,7 @@ from django.apps import AppConfig, apps
 from django.dispatch import receiver
 from django.forms import model_to_dict
 from bodegaApp.models.helpers.adjuntoDefaults import create_default_adjunto  # Import functions
+from bodegaApp.models.helpers.adminDefaults import create_default_admin, create_default_person
 from bodegaApp.models.helpers.categoriaDefaults import create_default_categoria
 from bodegaApp.models.identidades import Usuario
 from bodegaApp.models.registros import Registro
@@ -15,6 +16,8 @@ def create_default_instances(sender, **kwargs):
     if isinstance(sender, AppConfig) and sender.name == 'bodegaApp': # Check against AppConfig type and name
         create_default_adjunto()
         create_default_categoria()
+        create_default_person()
+        create_default_admin()
         
 def log_change(sender, instance, action):  # Consolidated logic
     try:
@@ -39,7 +42,7 @@ def log_change(sender, instance, action):  # Consolidated logic
                 new_data = model_to_dict(instance)
 
             Registro.objects.create(
-                user_id=user_id,
+                user_id=Usuario.objects.get(id=user_id),
                 nombreTabla=nombre_tabla,
                 modeloPrevio=json.dumps(previous_data),
                 modeloNuevo=json.dumps(new_data),

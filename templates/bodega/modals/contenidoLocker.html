@@ -25,14 +25,14 @@
                     <td>Caja</td> 
                     <td class="p-0 align-content-center justify-content-end text-end pe-5">
                         {% if caja.habitado %}
-                        <a class="btn btn-danger fw-bold" onclick="openModal('{% url "BodegaCaja" caja.id %}',true)"><img src="{% static "image/list.svg" %}"></a>
+                        <a class="btn bg-success fw-bold" onclick="openModal('{% url "BodegaCaja" caja.id %}',true)"><img src="{% static "image/list.svg" %}"></a>
                         {% else %}
-                        <a class="btn btn-danger fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Para ver el contenido de la caja debe estar poblado primero."><img src="{% static "image/list.svg" %}"></a>
+                        <a class="btn bg-danger fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Para ver el contenido de la caja debe estar poblado primero."><img src="{% static "image/list.svg" %}"></a>
                         {% endif %}
-                        <a class="btn btn-danger fw-bold" data-bs-placement="left" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-html="true" data-bs-title="<img src='{{caja.adjunto}}' height='250px' />"><img src="{% static "image/image.svg" %}"></a>
+                        <a class="btn bg-info fw-bold" data-bs-placement="left" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-html="true" data-bs-title="<img src='{{caja.adjunto}}' height='250px' />"><img src="{% static "image/image.svg" %}"></a>
                         <a class="btn bg-warning fw-bold" onclick="openModal('{% url "ActualizarCaja" caja.id %}',true)"><img src="{% static "image/edit.svg" %}"></a>
                         <a class="btn bg-warning fw-bold" onclick="openModal('{% url "MoverCaja" caja.id  %}',true)"><img src="{% static "image/swap.svg" %}"></a>
-                        <a class="btn btn-danger align-items-center fw-bold" onClick="openModal('{% url "BorrarCaja" caja.id %}',true)"><img src="{% static "image/delete.svg" %}"></a>
+                        <a class="btn bg-danger align-items-center fw-bold" onClick="openModal('{% url "BorrarCaja" caja.id %}',true)"><img src="{% static "image/delete.svg" %}"></a>
                     </td>
                 </tr>
             {% endfor %}

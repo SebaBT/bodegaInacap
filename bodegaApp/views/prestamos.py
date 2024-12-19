@@ -8,6 +8,7 @@ from bodegaApp.models import Prestamo
 from bodegaApp.models.archivos import Adjunto
 from bodegaApp.models.identidades import Usuario
 from bodegaApp.models.inventario import Insumo
+from django.contrib.auth.decorators import login_required
 
 section = {
     "seccionActiva": os.path.basename(__file__).replace('.py', ''),
@@ -17,12 +18,12 @@ section = {
 base = "prestamos/"
 modals = base + "modals/"
 
-
+@login_required
 def verPrestamos(request):
     context = {'prestamos': Prestamo.objects.all()}
     return render(request, base+"prestamos.html", { **context, **section })
 
-
+@login_required
 def crearPrestamo(request):
     form = PrestamoForm()
     imageForm = AdjuntoForm()
@@ -55,7 +56,7 @@ def crearPrestamo(request):
     context = {'form': form, 'imageForm': imageForm}
     return render(request, modals+"crear.html", { **context,**section })
 
-
+@login_required
 def actualizarPrestamo(request, id=None):
     prestamo = Prestamo.objects.get(id=id)
     form = PrestamoForm(instance=prestamo, initial={'insumo': prestamo.insumo})
@@ -94,6 +95,7 @@ def actualizarPrestamo(request, id=None):
     context = {'form': form, 'imageForm': imageForm,"prestamo": prestamo}
     return render(request, modals+"actualizar.html", { **context,**section })
 
+@login_required
 def detallesPrestamo(request,id):
     context = {
         "prestamo": Prestamo.objects.get(id=id),

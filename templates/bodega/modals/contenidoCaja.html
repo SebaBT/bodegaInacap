@@ -30,10 +30,10 @@
                     <td>{% if insumo.locker %}{{insumo.locker}}{% else %}Sin Locker{% endif %}</td>
                     <td>{% if insumo.caja %}{{insumo.caja}}{% else %}Sin Caja{% endif %}</td> 
                     <td class="p-0 align-content-center justify-content-end text-end pe-5">
-                        <a class="btn btn-danger fw-bold" onclick="openModal('{% url "DetallesInsumo" insumo.id %}',true)"><img src="{% static "image/details.svg" %}"></a>
-                        <a class="btn btn-danger fw-bold" data-bs-placement="left" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-html="true" data-bs-title="<img src='{{insumo.adjunto}}' height='250px' />"><img src="{% static "image/image.svg" %}"></a>
+                        <a class="btn bg-success fw-bold" onclick="openModal('{% url "DetallesInsumo" insumo.id %}',true)"><img src="{% static "image/details.svg" %}"></a>
+                        <a class="btn bg-info fw-bold" data-bs-placement="left" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-html="true" data-bs-title="<img src='{{insumo.adjunto}}' height='250px' />"><img src="{% static "image/image.svg" %}"></a>
                         <a class="btn bg-warning fw-bold" onclick="openModal('{% url "ActualizarInsumo" insumo.id %}',true)"><img src="{% static "image/edit.svg" %}"></a>
-                        <a class="btn btn-danger fw-bold" onclick="openModal('{% url "BorrarInsumo" insumo.id %}',true)"><img src="{% static "image/delete.svg" %}"></a>
+                        <a class="btn bg-danger fw-bold" onclick="openModal('{% url "BorrarInsumo" insumo.id %}',true)"><img src="{% static "image/delete.svg" %}"></a>
 
                     </td>
                 </tr>

@@ -136,3 +136,7 @@ AUTH_USER_MODEL = 'bodegaApp.Usuario'
 
 LANGUAGE_CODE = 'es'
 USE_I18N = True
+
+LOGIN_REDIRECT_URL = "/prestamos"
+LOGIN_URL = "/login"
+LOGOUT_REDIRECT_URL = "/login"

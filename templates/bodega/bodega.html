@@ -28,12 +28,12 @@
                     <td>{{ locker.comentario }}</td>  
                     <td class="p-0 align-content-center justify-content-end text-end pe-5">
                         {% if locker.habitado %}
-                        <a class="btn btn-danger fw-bold" onclick="openModal('{% url "BodegaLocker" locker.id %}')"><img src="{% static "image/list.svg" %}"></a>
+                        <a class="btn bg-success fw-bold" onclick="openModal('{% url "BodegaLocker" locker.id %}')"><img src="{% static "image/list.svg" %}"></a>
                         {% else %}
-                        <a class="btn btn-danger fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Para ver el contenido del locker debe estar poblado primero."><img src="{% static "image/list.svg" %}"></a>
+                        <a class="btn bg-danger fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Para ver el contenido del locker debe estar poblado primero."><img src="{% static "image/list.svg" %}"></a>
                         {% endif %}
-                        <a class="btn btn-danger fw-bold" onclick="openModal('{% url "DetallesLocker" locker.id %}')"><img src="{% static "image/details.svg" %}"></a>
-                        <a class="btn btn-danger fw-bold" data-bs-placement="left" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-html="true" data-bs-title="<img src='{{locker.adjunto}}' height='250px' />"><img src="{% static "image/image.svg" %}"></a>
+                        <a class="btn bg-success fw-bold" onclick="openModal('{% url "DetallesLocker" locker.id %}')"><img src="{% static "image/details.svg" %}"></a>
+                        <a class="btn bg-info fw-bold" data-bs-placement="left" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-html="true" data-bs-title="<img src='{{locker.adjunto}}' height='250px' />"><img src="{% static "image/image.svg" %}"></a>
                         <a class="btn bg-warning fw-bold" onclick="openModal('{% url "ActualizarLocker" locker.id %}')"><img src="{% static "image/edit.svg" %}"></a>
                         {% if locker.habitado %}
                         <a class="btn btn-danger fw-bold" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="El locker debe estar vacio para poder eliminarlo."><img src="{% static "image/delete.svg" %}"></a>

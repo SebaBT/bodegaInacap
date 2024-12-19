@@ -10,7 +10,7 @@ from bodegaApp.forms.persona import PersonaForm
 from bodegaApp.forms.usuario import UsuarioForm
 from bodegaApp.models.archivos import Adjunto
 from bodegaApp.models.identidades import Persona, Usuario
-
+from django.contrib.auth.decorators import login_required
 section = {
     "seccionActiva": os.path.basename(__file__).replace('.py', ''),
     "title": os.path.basename(__file__).replace('.py', '').capitalize(),
@@ -19,7 +19,7 @@ section = {
 base = "identidades/"
 modals = base + "modals/"
 
-
+@login_required
 def crearPersona(request):
     if request.method == 'POST':
         form = PersonaForm(request.POST)
@@ -33,7 +33,7 @@ def crearPersona(request):
 
     return render(request, modals+'crearPersona.html', {"form": form})
 
-
+@login_required
 def crearUsuario(request):
     if request.method == 'POST':
         for filename in request.FILES:

@@ -2,14 +2,21 @@
 
 <div class="card w-100 rounded-4 border-0 overflow-hidden bg-danger p-5">
     <div class="align-self-center">
-        <img src = "{% static "image/delete.svg" %}"/>
+        <img src ="{% static "image/delete.svg" %}" style="width:150px"/>
     </div>
     <h1 class="text-white">Seguro de borrar?</h1>
     <h2 class="text-white">Esta acción es irrevesible</h2>
     <form onsubmit="confirmDelete('{{request.get_full_path}}',this)">
         {% csrf_token %}
+        <div class="d-flex w-100 align-content-center justify-content-center gap-2">
         <button type="submit" class="btn bg-white" style="color: red;" >Aceptar</button>
-        <button class="btn bg-white" style="color: red;" data-bs-dismiss="modal">Cancelar</button>
+        <a class="btn bg-white" style="color: red;" data-bs-dismiss="modal">Cancelar</a>
+        <div>
+        <style>
+            .modalCloseButton {
+                display: none;
+            }
+        </style>
     </form>
     <br>
 </div>
