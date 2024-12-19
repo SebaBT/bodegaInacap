@@ -1,0 +1,239 @@
+.accordion-button:active {
+    background: red !important;
+}
+
+#info .d-flex {
+    text-align: center !important;
+    align-items: baseline !important;
+}
+
+#info .d-flex p {
+    margin: 0 !important;
+}
+
+p {
+    margin: 0 !important;
+}
+
+#navbar {
+    border-top: 5px solid red !important;
+    border-bottom: #e4e4e4 solid 1px !important;
+    height: 75px !important;
+}
+
+/* Estilos para el menú de lado */
+
+.sidebar {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 200px !important;
+    background-color: #f1f1f1 !important;
+    height: 100% !important;
+    overflow: auto !important;
+}
+
+/* Sidebar links */
+.sidebar a {
+    display: block !important;
+    color: black !important;
+    padding: 10px !important;
+    border: #e4e4e4 solid 1px !important;
+    text-decoration: none !important;
+    
+}
+
+/* Active/current link */
+.sidebar a.active {
+    background-color: red !important;
+    color: white !important;
+}
+
+/* Links on mouse-over */
+.sidebar a:hover:not(.active) {
+    background-color: #c9c9c9 !important;
+    color: white
+}
+
+.sidebar a.active:hover {
+    background-color: rgb(103, 3, 3) !important;
+    color: white !important;
+}
+
+.active.main, .active.sub {
+    background-color: red !important;
+}
+
+.main{
+    background-color: white !important;
+}
+
+.sub{
+    background-color: #e7e7e7 !important;
+}
+
+.content {
+    margin-left: 200px !important;
+    padding: 1px 16px !important;
+    height: 1000px !important;
+}
+
+#down .d-flex{
+    display: flex !important;
+    text-align: left !important;
+}
+
+#down #sidebar{
+    width: 200px !important;
+}
+
+#down {
+    height:  calc(100vh - 4.8rem) !important;
+}
+
+#main{
+    height: 100% !important;
+    flex-direction: column !important;
+}
+
+#content{
+    display: flex !important;
+    border-top: #e4e4e4 solid 1px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+#top{
+    width: 100% !important;
+    height: 40px !important;
+    background-color: red !important;
+    text-align: center !important;
+    align-items: center !important;
+    color: white !important;
+    border-radius: 10px 10px 0px 0px !important;
+    border: transparent solid 1px !important;
+    font-weight: bold !important;
+    padding: 0 !important;
+    line-height: 0px !important;
+
+}
+
+#insumoCreate{
+    border: #e4e4e4 solid 1px !important;
+    border-radius: 10px !important;
+    padding: 0 !important;
+
+}
+
+hr.rounded {
+    border-top: 8px solid #bbb !important;
+    border-radius: 5px !important;
+}
+
+.card-body {
+    scrollbar-width: none !important;
+}
+
+.modalCloseButton {
+    all: unset;
+    background-color: red;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    z-index: 1;
+    left: 98%;
+    border-radius: 0 5px 5px 0;
+    border-color: #0000002d;
+}
+.modalCloseButton::after {
+    color: white;
+    content: "X";
+    margin: auto;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    bottom: calc(50% - 5px);
+    left: calc(50% - 5px);
+    top: calc(50% - 5px);
+}
+
+.seccionActiva{
+    background-color: red !important;
+    color: white !important;
+}
+
+#createInput input[type="text"]{
+    width: 150px !important;
+}
+
+#createInput select{
+    width: 150px !important;
+}
+
+#createPassword input[type="password"]{
+    width: 150px !important;
+}
+
+#createEmail input[type="email"]{
+    width: 150px !important;
+}
+
+#createDate input[type="date"]{
+    width: 150px !important;
+}
+
+
+
+.inputWrapper {
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    background-color: #DDF;
+    border: 1px gray dashed;
+    height: 250px;
+    object-fit: contain !important;
+}
+
+.fileInput {
+    cursor: pointer;
+    height: 100%;
+    position:absolute;
+    top: 0;
+    right: 0;
+    font-size:50px;
+}
+.hidden {
+    opacity: 0;
+    -moz-opacity: 0;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0)
+}
+
+.btn{
+    background-color: red !important;
+    border: none !important;
+}
+
+textarea {
+    resize: none !important;
+    overflow-x: hidden !important;
+}
+
+.modal-dialog {
+    width: fit-content !important;
+    max-width: 1140px !important;
+}
+
+#imgPreview {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.tooltip-inner {
+    max-width: 750px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    border-style: solid;
+    border-width: 5px;
+    border-color: black;
+}
