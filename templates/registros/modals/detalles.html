@@ -3,14 +3,16 @@
         <h4>{{formTitle}}</h4>
     </div>
 
-        <div class="card-body d-flex text-left overflow-scroll">
+        <div class="card-body d-flex text-left overflow-scroll gap-3">
             
             <div class="col-6">
                 <div class="d-flex gap-5">
-                    <textarea id="textArea" cols=50 rows=10 disabled readonly>{{modeloPrevio}}</textarea>
+                    <textarea id="textArea" cols=50 rows=10 disabled readonly>{{registro.modeloPrevio}}</textarea>
                 </div>
-                <div class="col-6 d-flex flex-end justify-content-end flex-fill ps-2 pb-2 align-items-center">
-                    <textarea id="textArea" cols=50 rows=10 disabled readonly>{{modeloNuevo}}</textarea>
-                </div>
+            </div>
+            <div class="col-6">
+                <div class="d-flex gap-5">
+                <textarea id="textArea" cols=50 rows=10 disabled readonly>{{registro.modeloNuevo}}</textarea>
+            </div>
         </div>
 </div>

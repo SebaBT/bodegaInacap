@@ -27,14 +27,12 @@
                     <td>{{ registro.timestamp }}</td> 
                     <td>{{ registro.action }}</td> 
                     <td class="p-0 align-content-center justify-content-end text-end pe-5">
-                        <a class="btn bg-success fw-bold" onclick="openModal('{% url "DetallesRegistro" registro.id %}')"><img src="{% static "image/details.svg" %}"></a>
+                        <a class="btn bg-success fw-bold" onclick="openModal('{% url "DetalleRegistro" registro.id %}')"><img src="{% static "image/details.svg" %}"></a>
                     </td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
 </div>
-
-{% include "../components/modal.html" %}
 
 {% endblock %}
